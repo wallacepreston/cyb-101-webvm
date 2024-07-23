@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Start SSH and RDP services
+# Start SSH service
 service ssh start
 
 ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'

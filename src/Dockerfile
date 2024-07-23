@@ -63,9 +63,14 @@ RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd
 # start ssh services
 RUN service ssh start
 
-# Expose SSH and RDP ports
+# Expose SSH port
 EXPOSE 22
-EXPOSE 3389
 
-# Start a bash shell by default
-CMD [ "/bin/bash" ]
+# # Copy the assets into the container
+COPY assets /home/codepath/
+
+# Make the startup script executable
+RUN chmod +x /home/codepath/startup.sh
+
+# Set the default command to run the startup script
+CMD ["/home/codepath/startup.sh"]
