@@ -71,7 +71,7 @@ EXPOSE 22
 EXPOSE 3389
 
 # # Copy the assets into the container
-COPY assets /home/codepath/
+COPY src/assets /home/codepath/
 
 # Make the startup script executable
 RUN chmod +x /home/codepath/startup.sh
