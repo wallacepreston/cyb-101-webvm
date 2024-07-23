@@ -84,13 +84,13 @@ jobs:
       - name: Generate the image_name.
         id: image_name_gen
         run: |
-          echo "IMAGE_NAME=$(basename ${{ github.event.inputs.DOCKERFILE_PATH }})_$(date +%Y%m%d)_${{ github.run_id }}.ext2" >> $GITHUB_ENV
+          echo "IMAGE_NAME=$(basename $DOCKERFILE_PATH)_$(date +%Y%m%d)_${{ github.run_id }}.ext2" >> $GITHUB_ENV
 
       # Create directory to host the image from.
       - run: sudo mkdir -p $DEPLOY_DIR
 
       # Build the i386 Dockerfile image.
-      - run: docker build . --tag $TAG --file ${{ github.event.inputs.DOCKERFILE_PATH }} --platform=i386
+      - run: docker build . --tag $TAG --file $DOCKERFILE_PATH --platform=i386
       
       # Run the docker image so that we can export the container.
       # Run the Docker container with the Google Public DNS nameservers: 8.8.8.8, 8.8.4.4
