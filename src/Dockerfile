@@ -1,5 +1,5 @@
 # Use the official Ubuntu base image
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 # Set environment variables to avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -60,7 +60,7 @@ RUN chmod 700 /home/codepath/.ssh && \
 
 # Create directories for install_tool
 RUN mkdir -p /home/codepath/unit2 /home/codepath/unit3 /home/codepath/unit6
-COPY . /home/codepath
+COPY src /home/codepath
 
 # Switch to root to make executable
 USER root
