@@ -79,10 +79,6 @@ RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd
     sed -i 's/#AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_keys2/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config && \
     echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 
-# Set up RDP server
-RUN adduser xrdp ssl-cert
-RUN echo "startxfce4" > /home/codepath/.xsession
-
 # start ssh service
 RUN service ssh start
 
