@@ -1,5 +1,5 @@
-# Use debian with i386 architecture
-FROM i386/debian:stable
+# Use debian with i386 architecture (32-bit) as the base image
+FROM --platform=i386 i386/debian:buster
 
 # Set environment variables to avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
