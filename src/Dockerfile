@@ -1,5 +1,5 @@
 # Use the official Ubuntu base image
-FROM ubuntu:24.04
+FROM ubuntu:22.04
 
 # Set environment variables to avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -69,12 +69,6 @@ RUN service ssh start
 # Expose SSH and RDP ports
 EXPOSE 22
 EXPOSE 3389
-
-# # Copy the assets into the container
-COPY src/assets /home/codepath/
-
-# Make the startup script executable
-RUN chmod +x /home/codepath/startup.sh
 
 # Start a bash shell by default
 CMD [ "/bin/bash" ]
