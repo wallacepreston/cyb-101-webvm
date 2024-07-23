@@ -4,14 +4,17 @@ FROM ubuntu:24.04
 # Set environment variables to avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update the package list, install required packages, and clean up
+# Update the package list, install required packages for most units
 RUN apt-get update && \
     apt-get install -y curl dnsutils openssh-client sudo vim
+# Install ssh server to enable ssh into the container
 RUN apt-get install -y openssh-server
+# Install git
 RUN apt-get install -y software-properties-common && \
     add-apt-repository ppa:git-core/ppa -y && \
     apt-get update && \
     apt-get install -y git
+# Clean up
 RUN apt-get clean && \
         rm -rf /var/lib/apt-get/lists/*
 
@@ -67,7 +70,7 @@ RUN service ssh start
 EXPOSE 22
 EXPOSE 3389
 
-# # Copy the startup script into the container
+# # Copy the assets into the container
 COPY assets /home/codepath/
 
 # Make the startup script executable
