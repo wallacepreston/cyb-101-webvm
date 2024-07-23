@@ -2,7 +2,6 @@
 
 # Start SSH and RDP services
 service ssh start
-service xrdp start
 
 ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'
 

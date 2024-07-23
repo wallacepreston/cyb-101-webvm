@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Update the package list, install required packages, and clean up
 RUN apt update
-RUN apt install -y xrdp openssh-server
+RUN apt install -y openssh-server
 RUN apt install -y python3 python3-pip python-is-python3
 RUN apt install -y snapd
 RUN apt install -y john
@@ -83,9 +83,8 @@ RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd
 RUN adduser xrdp ssl-cert
 RUN echo "startxfce4" > /home/codepath/.xsession
 
-# start ssh and xrdp services
-RUN service ssh start && \
-    service xrdp start
+# start ssh service
+RUN service ssh start
 
 # Expose SSH and RDP ports
 EXPOSE 22

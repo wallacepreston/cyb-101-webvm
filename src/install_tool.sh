@@ -99,9 +99,9 @@ install_specific_script() {
     type=$2
     script_name="unit${unit}_${type}.sh"
 
-    # Set the script name to rdp_setup.sh if unit is 0
+    # Skip unit 0 (xrdp setup) to optimize disk space
     if [ "$unit" == "0" ]; then
-        script_name="rdp_setup.sh"
+        exit 0
     fi
 
     # run script
