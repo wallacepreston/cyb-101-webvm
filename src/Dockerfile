@@ -67,7 +67,7 @@ RUN service ssh start
 EXPOSE 22
 
 # # Copy the assets into the container
-COPY assets /home/codepath/
+COPY src/assets /home/codepath/
 
 # Make the startup script executable
 RUN chmod +x /home/codepath/startup.sh
