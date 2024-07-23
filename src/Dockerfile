@@ -1,5 +1,10 @@
-# Use the official Ubuntu base image
+# Use the official Ubuntu base image, but specifically the 22.04 version, and the i386 architecture
 FROM ubuntu:22.04
+
+# Install 32-bit architecture support
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386
 
 # Set environment variables to avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
