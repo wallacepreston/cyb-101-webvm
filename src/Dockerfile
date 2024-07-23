@@ -10,10 +10,12 @@ RUN apt-get update && \
 # Install ssh server to enable ssh into the container
 RUN apt-get install -y openssh-server
 # Install git
-RUN apt-get install -y software-properties-common && \
-    add-apt-repository ppa:git-core/ppa -y && \
-    apt-get update && \
-    apt-get install -y git
+RUN apt-get update && \
+    apt-get install -y \
+    xrdp \
+    xfce4 \
+    xfce4-goodies \
+    git
 # Clean up
 RUN apt-get clean && \
         rm -rf /var/lib/apt-get/lists/*
