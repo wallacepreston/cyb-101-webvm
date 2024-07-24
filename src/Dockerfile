@@ -72,5 +72,5 @@ COPY src/assets /home/codepath/
 # Make the startup script executable
 RUN chmod +x /home/codepath/startup.sh
 
-# Set the default command to run the startup script
-CMD ["/home/codepath/startup.sh"]
+# Start bash by default
+CMD [ "/bin/bash" ]
