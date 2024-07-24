@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Start SSH service
-service ssh start
-
 ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'
 
 echo "SSH Private Key: \n"
